@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>人脸涂鸦游戏</title>
+    <link rel="stylesheet" href="styles.css">
+    <!-- 引入face-api.js库用于人脸检测 -->
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@2.0.0/dist/tf.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/face-api.js@0.22.2/dist/face-api.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h1>人脸涂鸦游戏</h1>
+        <div class="main-content">
+            <div class="game-area">
+                <div class="video-container">
+                    <video id="video" autoplay muted playsinline controls style="background-color: #000;"></video>
+                    <canvas id="drawingCanvas"></canvas>
+                </div>
+            </div>
+            <div class="right-panel">
+                <h2>风格转换</h2>
+                <div class="photo-controls">
+                    <button id="captureBtn" class="btn" disabled>拍照</button>
+                    <select id="styleSelect" class="style-select" disabled>
+                        <option value="original">原图</option>
+                        <option value="anime">动漫风格</option>
+                        <option value="oil">油画风格</option>
+                        <option value="comic">二次元风格</option>
+                    </select>
+                    <button id="convertBtn" class="btn" disabled>转换</button>
+                </div>
+                <div class="result-area">
+                    <h3>转换结果</h3>
+                    <canvas id="resultCanvas"></canvas>
+                </div>
+            </div>
+        </div>
+        <div class="controls">
+            <button id="startBtn" class="btn">开始摄像头</button>
+            <button id="stopBtn" class="btn" disabled>停止摄像头</button>
+            <button id="clearBtn" class="btn" disabled>清除涂鸦</button>
+            <div class="color-picker">
+                <span>选择颜色:</span>
+                <input type="color" id="colorPicker" value="#FF0000">
+            </div>
+            <div class="brush-size">
+                <span>画笔大小:</span>
+                <input type="range" id="brushSize" min="1" max="20" value="5">
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
